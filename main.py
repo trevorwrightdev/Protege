@@ -26,7 +26,7 @@ h = h - titlebar_pixels - border_pixels
 cropped_x = border_pixels
 cropped_y = titlebar_pixels
 
-# reducing window size
+# reducing window size ------
 
 cropped_x += math.floor(w / 2)
 cropped_y += math.floor(h / 2)
@@ -37,7 +37,7 @@ h = math.floor(0.5 * h)
 cropped_x -= math.floor(w / 2)
 cropped_y -= math.floor(h / 2)
 
-
+# ---------------------------
 
 
 # screenshot functions
