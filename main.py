@@ -3,11 +3,10 @@ import numpy as np
 import os
 import pyautogui
 from time import time
+import time
 import win32gui, win32ui, win32con
 import math
-
-# TODO: Optimize everything a ton by capturing a smaller part of the screen. First I will expreriment with decreasing width and height
-# and see if it remains centered. If it doesn't, offset it with the some stuff that cropped_x and cropped_y does. That should be pretty easy.
+import pydirectinput
 
 # Setup 
 window_name = 'For Honor™'
@@ -31,8 +30,8 @@ cropped_y = titlebar_pixels
 cropped_x += math.floor(w / 2)
 cropped_y += math.floor(h / 2)
 
-w = math.floor(0.4 * w)
-h = math.floor(0.5 * h)
+w = math.floor(0.1 * w)
+h = math.floor(0.2 * h)
 
 cropped_x -= math.floor(w / 2)
 cropped_y -= math.floor(h / 2)
@@ -85,9 +84,8 @@ def window_capture():
 unblockable_needle = cv.imread('images/needle.png')
 
 # determine threshholds
-unblockable_thresh = 0.7
+unblockable_thresh = 0.4
 
-loop_time = time()
 while True:
 
     haystack = window_capture()
@@ -101,10 +99,12 @@ while True:
 
     if max_val >= unblockable_thresh:
         print('Dodge!')
+        pydirectinput.keyDown('a')
+        pydirectinput.press('space')
+        pydirectinput.keyUp('a')
 
     print(max_val)
     # print('FPS {}'.format(1 / (time() - loop_time)))
-    loop_time = time()
 
     if cv.waitKey(1) == ord('q'):
         cv.destroyAllWindows()
