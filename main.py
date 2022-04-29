@@ -2,7 +2,6 @@ import cv2 as cv
 import numpy as np
 import os
 import pyautogui
-from time import time
 import time
 import win32gui, win32ui, win32con
 import math
@@ -77,14 +76,28 @@ def window_capture():
 
     return img
 
-    
+# Mixups
+def gb_kick_to_dodge_light_palm():
+        time.sleep(0.5)
+        pydirectinput.press('r')
+        time.sleep(0.5)
+        pydirectinput.press('m')
+        time.sleep(0.5)
+        pydirectinput.press('r')
+        time.sleep(0.2)
+        pydirectinput.keyDown('w')
+        pydirectinput.press('space')
+        pydirectinput.press('l')
+        pydirectinput.keyUp('w')
+
+
 # The Prodige ------
 
 # declare needles
 unblockable_needle = cv.imread('images/needle.png')
 
 # determine threshholds
-unblockable_thresh = 0.4
+unblockable_thresh = 0.55
 
 while True:
 
@@ -102,6 +115,9 @@ while True:
         pydirectinput.keyDown('a')
         pydirectinput.press('space')
         pydirectinput.keyUp('a')
+
+        gb_kick_to_dodge_light_palm()
+
 
     print(max_val)
     # print('FPS {}'.format(1 / (time() - loop_time)))
