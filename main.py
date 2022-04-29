@@ -82,10 +82,10 @@ def window_capture():
 # The Prodige ------
 
 # declare needles
-unblockable_needle = cv.imread('images/needle.jpg')
+unblockable_needle = cv.imread('images/needle.png')
 
 # determine threshholds
-unblockable_thresh = 0.8
+unblockable_thresh = 0.7
 
 loop_time = time()
 while True:
@@ -102,8 +102,8 @@ while True:
     if max_val >= unblockable_thresh:
         print('Dodge!')
 
-
-    print('FPS {}'.format(1 / (time() - loop_time)))
+    print(max_val)
+    # print('FPS {}'.format(1 / (time() - loop_time)))
     loop_time = time()
 
     if cv.waitKey(1) == ord('q'):
