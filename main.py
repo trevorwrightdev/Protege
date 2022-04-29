@@ -79,14 +79,29 @@ def window_capture():
     return img
 
     
+# The Prodige ------
 
+# declare needles
+unblockable_needle = cv.imread('images/needle.jpg')
+
+# determine threshholds
+unblockable_thresh = 0.8
 
 loop_time = time()
 while True:
 
-    screenshot = window_capture()
+    haystack = window_capture()
 
-    cv.imshow('Screen Recording', screenshot)
+    cv.imshow('Screen Recording', haystack)
+
+    # check for indicator
+    result = cv.matchTemplate(haystack, unblockable_needle, cv.TM_CCOEFF_NORMED)
+
+    min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
+
+    if max_val >= unblockable_thresh:
+        print('Dodge!')
+
 
     print('FPS {}'.format(1 / (time() - loop_time)))
     loop_time = time()
@@ -96,5 +111,6 @@ while True:
         break
 
 
-list_open_windows()
+
 print('Done.')
+# ----------------------
