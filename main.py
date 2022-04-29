@@ -5,6 +5,9 @@ import pyautogui
 from time import time
 import win32gui, win32ui, win32con
 
+# TODO: Optimize everything a ton by capturing a smaller part of the screen. First I will expreriment with decreasing width and height
+# and see if it remains centered. If it doesn't, offset it with the some stuff that cropped_x and cropped_y does. That should be pretty easy.
+
 # Setup 
 window_name = 'Minecraft* 1.18.1'
 hwnd = win32gui.FindWindow(None, window_name)
