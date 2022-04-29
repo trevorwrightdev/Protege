@@ -9,7 +9,7 @@ import win32gui, win32ui, win32con
 # and see if it remains centered. If it doesn't, offset it with the some stuff that cropped_x and cropped_y does. That should be pretty easy.
 
 # Setup 
-window_name = 'Minecraft* 1.18.1'
+window_name = 'For Honor™'
 hwnd = win32gui.FindWindow(None, window_name)
 
 window_rect = win32gui.GetWindowRect(hwnd)
@@ -20,6 +20,8 @@ border_pixels = 8
 titlebar_pixels = 30
 w = w - (border_pixels * 2)
 h = h - titlebar_pixels - border_pixels
+
+
 cropped_x = border_pixels
 cropped_y = titlebar_pixels
 
@@ -79,4 +81,6 @@ while True:
         cv.destroyAllWindows()
         break
 
+
+list_open_windows()
 print('Done.')
