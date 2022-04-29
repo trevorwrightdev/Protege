@@ -4,6 +4,7 @@ import os
 import pyautogui
 from time import time
 import win32gui, win32ui, win32con
+import math
 
 # TODO: Optimize everything a ton by capturing a smaller part of the screen. First I will expreriment with decreasing width and height
 # and see if it remains centered. If it doesn't, offset it with the some stuff that cropped_x and cropped_y does. That should be pretty easy.
@@ -24,6 +25,19 @@ h = h - titlebar_pixels - border_pixels
 
 cropped_x = border_pixels
 cropped_y = titlebar_pixels
+
+# reducing window size
+
+cropped_x += math.floor(w / 2)
+cropped_y += math.floor(h / 2)
+
+w = math.floor(0.4 * w)
+h = math.floor(0.5 * h)
+
+cropped_x -= math.floor(w / 2)
+cropped_y -= math.floor(h / 2)
+
+
 
 
 # screenshot functions
